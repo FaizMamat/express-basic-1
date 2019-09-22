@@ -10,9 +10,11 @@ export class UrlsController {
         response.json(storage.urls)
     }
     async posturl(request: Request, response: Response, next: NextFunction) {
+        let idData =  storage.urls.length + 1
         let url = {
-            "id": storage.urls.length + 1,
-            "longURL":request.body.longURL
+            "id": idData,
+            "longURL":request.body.longURL,
+            "shortURL":"https://tranquil-caverns-37372.herokuapp.com/urls/" + idData
         }
         storage.urls.push(url)
 
@@ -25,7 +27,7 @@ export class UrlsController {
         let urlId = request.params.urlId
         for(let url of storage.urls){
             if(url.id === parseInt(urlId)){
-                response.json(url)
+                response.redirect(url.longURL)
                 return
             }
         }

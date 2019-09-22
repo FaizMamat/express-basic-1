@@ -4,14 +4,9 @@ import {NextFunction, Request, Response} from "express";
 import { Routes } from "./routes";
 import * as cors from 'cors'
 
-export const storage = {
-    urls: [
-        {
-            "id": 1,
-            "longURL": "https://gitpitch.com/mingxiangchan/dell-slides/express-1"
-        },
 
-    ]
+export const storage = {
+    urls: []
 }
 
 export const srcPath = __dirname
